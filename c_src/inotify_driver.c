@@ -98,7 +98,7 @@ int main() {
   maxfd = setup_select(nlist, &readfds);
   
   while ((retval = select(maxfd + 1, &readfds, NULL, NULL, NULL)) >= 0) {
-    if FD_ISSET(0, &readfds) {
+    if (FD_ISSET(0, &readfds)) {
       memset(inbuf, 0, size);
       index = 0;
       result = read_cmd(&inbuf, &size, &cmdpos);
